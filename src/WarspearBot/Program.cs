@@ -21,7 +21,7 @@ namespace WarspearBot
         {
             if (!OperatingSystem.IsWindows())
             {
-                throw new NotSupportedException("OS other then Windows are not supported");
+                throw new NotSupportedException("OS other then Windows is not supported");
             }
 
             var config = new ConfigurationBuilder()

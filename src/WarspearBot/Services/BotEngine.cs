@@ -43,8 +43,11 @@ namespace WarspearBot.Services
                 throw new Exception("Unexpected window size");
             }
 
-            _windowAgent.MoveWindow(_windowHandle, configuration.WindowInitialLocation);
-
+            if (configuration.MoveWindowOnStart)
+            {
+                _windowAgent.MoveWindow(_windowHandle, configuration.WindowInitialLocation);
+            }
+            
             if (configuration.PinWindowToTop)
             {
                 _windowAgent.PinToTop(_windowHandle);
@@ -62,8 +65,8 @@ namespace WarspearBot.Services
             var bitmap = new Bitmap(size.W, size.H);
             var (windowX, windowY) = _windowAgent.GetWindowLocation(_windowHandle);
 
-            var x = windowX + _config.GameScreenLeftTop.X + location.X;
-            var y = windowY + _config.GameScreenLeftTop.Y + location.Y;
+            var x = windowX + _config.GameScreenLeftTopOffset.X + location.X;
+            var y = windowY + _config.GameScreenLeftTopOffset.Y + location.Y;
 
             return _windowAgent.MakeScreenshot(bitmap, (x, y));
         }
@@ -96,8 +99,8 @@ namespace WarspearBot.Services
         public void Click((int X, int Y) location, MouseClick mouseClick)
         {
             var (windowX, windowY) = _windowAgent.GetWindowLocation(_windowHandle);
-            var x = windowX + _config.GameScreenLeftTop.X + location.X;
-            var y = windowY + _config.GameScreenLeftTop.Y + location.Y;
+            var x = windowX + _config.GameScreenLeftTopOffset.X + location.X;
+            var y = windowY + _config.GameScreenLeftTopOffset.Y + location.Y;
             _windowAgent.MouseClick((x, y), mouseClick);
         }
 

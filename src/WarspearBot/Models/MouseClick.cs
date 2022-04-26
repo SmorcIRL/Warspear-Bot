@@ -1,7 +1,8 @@
-﻿namespace WarspearBot.Models;
-
-public enum MouseClick
+﻿namespace WarspearBot.Models
 {
-    Left = 0,
-    Right = 1,
+    public enum MouseClick
+    {
+        Left = 0,
+        Right = 1,
+    }
 }

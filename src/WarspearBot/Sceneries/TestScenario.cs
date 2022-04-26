@@ -44,12 +44,14 @@ namespace WarspearBot.Sceneries
             return new EngineInitConfiguration
             {
                 WindowName = "VirtualBoxVM",
+                MoveWindowOnStart = true,
                 WindowInitialLocation = (0, 0),
                 WindowExpectedSize = (816, 639),
                 PinWindowToTop = true,
-                GameScreenLeftTop = (8, 31),
+                GameScreenLeftTopOffset = (8, 31),
                 GameScreenSize = (800, 600),
                 ScenarioName = "TestScenario",
+                //=========================================//
                 CollectLootClickLocation = (300, 140),
                 Skill2Location = (180, 580),
                 CloseEnemySelectionClickLocation = (300, 530),
