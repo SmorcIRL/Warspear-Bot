@@ -11,37 +11,37 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Emgu.CV" Version="4.5.4.4788" />
-        <PackageReference Include="Emgu.CV.Bitmap" Version="4.5.4.4788" />
-        <PackageReference Include="Emgu.CV.runtime.windows" Version="4.5.4.4788" />
-        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
-        <PackageReference Include="NLog" Version="5.0.0-rc2" />
-        <PackageReference Include="NLog.Extensions.Logging" Version="5.0.0-rc2" />
-        <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
-        <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="6.0.0" />
+        <PackageReference Include="Emgu.CV" Version="4.5.4.4788"/>
+        <PackageReference Include="Emgu.CV.Bitmap" Version="4.5.4.4788"/>
+        <PackageReference Include="Emgu.CV.runtime.windows" Version="4.5.4.4788"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0"/>
+        <PackageReference Include="NLog" Version="5.0.0-rc2"/>
+        <PackageReference Include="NLog.Extensions.Logging" Version="5.0.0-rc2"/>
+        <PackageReference Include="System.Drawing.Common" Version="6.0.0"/>
+        <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="6.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
         <None Update="appsettings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Remove="Temp\**" />
+        <None Remove="Temp\**"/>
     </ItemGroup>
     <ItemGroup>
         <Content Include="Images\**">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
-        <None Remove="NLog.config" />
+        <None Remove="NLog.config"/>
         <Content Include="NLog.config">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
     <ItemGroup>
-        <Compile Remove="Temp\**" />
+        <Compile Remove="Temp\**"/>
     </ItemGroup>
     <ItemGroup>
-        <EmbeddedResource Remove="Temp\**" />
+        <EmbeddedResource Remove="Temp\**"/>
     </ItemGroup>
 
 </Project>

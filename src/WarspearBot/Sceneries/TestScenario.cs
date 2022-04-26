@@ -3,9 +3,9 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using WarspearBot.Contracts;
 using WarspearBot.Models;
-using Microsoft.Extensions.Logging;
 
 namespace WarspearBot.Sceneries
 {
@@ -17,6 +17,12 @@ namespace WarspearBot.Sceneries
             ("fairy_right.bmp", 0.6f),
             ("fairy_down.bmp", 0.6f),
             ("fairy_left.bmp", 0.6f),
+        };
+
+        private readonly (string TemplateName, float Threshold)[] _fairyAttackedTemplates =
+        {
+            ("fairy_attacked_1.bmp", 0.7f),
+            ("fairy_attacked_2.bmp", 0.7f),
         };
 
         private readonly (string TemplateName, float Threshold)[] _lootTemplates =
@@ -44,7 +50,7 @@ namespace WarspearBot.Sceneries
             return new EngineInitConfiguration
             {
                 WindowName = "VirtualBoxVM",
-                MoveWindowOnStart = true,
+                MoveWindowOnStart = false,
                 WindowInitialLocation = (0, 0),
                 WindowExpectedSize = (816, 639),
                 PinWindowToTop = true,
@@ -117,7 +123,7 @@ namespace WarspearBot.Sceneries
             {
                 using var screen = Engine.MakeGameScreenshot();
 
-                var matchesRedArea = Engine.GetTemplateMatches(screen, ("fairy_attacked.bmp", 0.7f));
+                var matchesRedArea = Engine.GetTemplateMatches(screen, _fairyAttackedTemplates);
                 if (matchesRedArea.Count != 0)
                 {
                     redAreaMatch = matchesRedArea[0];
@@ -163,7 +169,7 @@ namespace WarspearBot.Sceneries
             }
             else
             {
-                Logger.LogInformation("Loot not found, repeating cycle");
+                Logger.LogInformation("Loot not found, repeating farm cycle");
                 return;
             }
 
@@ -202,6 +208,10 @@ namespace WarspearBot.Sceneries
                         Engine.Click(Configuration.CloseLootWindowClickLocation);
                         await Delay(300);
                     }
+                    else
+                    {
+                        Logger.LogInformation("Loot collected");
+                    }
 
                     break;
                 }
@@ -210,8 +220,10 @@ namespace WarspearBot.Sceneries
             }
 
             var hpPercent = GetHealthPercent();
+            Logger.LogInformation($"HP percent: {hpPercent}");
             if (hpPercent < 80)
             {
+                Logger.LogInformation("Healing");
                 Engine.Click(Configuration.Skill2Location, MouseClick.Right);
                 await Delay(500);
             }

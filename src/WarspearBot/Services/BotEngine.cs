@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using WarspearBot.Contracts;
 using WarspearBot.Helpers;
 using WarspearBot.Models;
-using Microsoft.Extensions.Logging;
 
 namespace WarspearBot.Services
 {
@@ -47,7 +47,7 @@ namespace WarspearBot.Services
             {
                 _windowAgent.MoveWindow(_windowHandle, configuration.WindowInitialLocation);
             }
-            
+
             if (configuration.PinWindowToTop)
             {
                 _windowAgent.PinToTop(_windowHandle);
@@ -88,11 +88,12 @@ namespace WarspearBot.Services
                         TemplateSize = (template.Width, template.Height),
                     });
                 })
+                .OrderByDescending(x => x.MatchingRate)
                 .ToList();
 
             _logger.LogInformation($"Matching [{templateInfos.Select(x => x.TemplateName).Join()}]. " +
                                    $"Total: {matches.Count}. " +
-                                   $"Best: {(matches.Count > 0 ? matches.OrderByDescending(x => x.MatchingRate).Select(x => $"({x.TemplateName}: {x.MatchingRate})").First() : "-")}");
+                                   $"Best: {(matches.Count > 0 ? $"({matches[0].TemplateName}: {matches[0].MatchingRate})" : "-")}");
             return matches;
         }
 

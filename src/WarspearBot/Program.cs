@@ -1,16 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using WarspearBot.Contracts;
-using WarspearBot.Models;
-using WarspearBot.Sceneries;
-using WarspearBot.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
-using WarspearBot;
+using WarspearBot.Contracts;
+using WarspearBot.Models;
+using WarspearBot.Sceneries;
 using WarspearBot.Services;
 
 namespace WarspearBot

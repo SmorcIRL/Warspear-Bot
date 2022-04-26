@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using WarspearBot.Contracts;
-using WarspearBot.Models;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using WarspearBot.Contracts;
+using WarspearBot.Models;
 
 namespace WarspearBot.Sceneries
 {

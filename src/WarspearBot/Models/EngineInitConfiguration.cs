@@ -5,7 +5,7 @@
         public (int W, int H) WindowExpectedSize { get; set; }
 
         public bool MoveWindowOnStart { get; set; }
-        
+
         public (int X, int Y) WindowInitialLocation { get; set; }
 
         public bool PinWindowToTop { get; set; }
