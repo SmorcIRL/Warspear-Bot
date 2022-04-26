@@ -1,0 +1,2 @@
+# WarspearBot
+Simple WarspearOnline bot.
