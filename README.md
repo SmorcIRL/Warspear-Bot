@@ -1,4 +1,4 @@
-# WarspearBot
+# Warspear-Bot
 This is a simple example of a bot for Warspear Online, written for educational purposes. I haven't played this game for a very long time and did not aim to write a full-fledged bot, but maybe someone will develop the idea.
 
 # Requirements
